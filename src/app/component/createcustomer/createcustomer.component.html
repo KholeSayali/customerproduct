@@ -1,0 +1,33 @@
+<p>createcustomer works!</p>
+<div style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Customer Id</label>
+        <input type="number" class="form-control" id="id" required [(ngModel)]="custo.id" name="id">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Customer Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="custo.name" name="name">
+      </div>
+  
+      <div class="form-group">
+        <label for="pro">Choose a Product:</label>
+
+      <select name="pro" id="pro" #selectedProduct>
+          <option *ngFor="let p of products |  async ; let i = index" value="{{i}}">{{p.productName}}</option>
+         
+        </select>
+        
+        <button type="button" (click)="addItemProduct(selectedProduct.value)" class="btn btn-info" style="margin-left: 10px">Add More Items</button>
+      </div>
+  
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+
+  <div *ngFor="let p of custo.products">
+    <p>{{p.productId}}</p>
+    <p>{{p.productName}}</p>
+    <p>{{p.price}}</p>
+  </div>
